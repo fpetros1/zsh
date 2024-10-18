@@ -26,7 +26,7 @@ source "$ZSH_PLUGINS_FOLDER/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 bindkey '^I' menu-complete
 bindkey "$terminfo[kcbt]" reverse-menu-complete
 zstyle ':autocomplete:*' min-input 3
-zstyle ':autocomplete:*' delay 1
+zstyle ':autocomplete:*' delay 0.3
 
 [[ -f "$ENV_FILE" ]] &&\
 	source "$ENV_FILE"
