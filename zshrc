@@ -14,7 +14,10 @@ SHELL_FIRST_EXEC="1"
 HISTFILE="$HOME/.zsh_history"
 ENV_FILE="$HOME/.environment"
 ZSH_PLUGINS_FOLDER="$(dirname $(readlink -f $HOME/.zshrc))/plugins"
+TMUX_MOTD="false"
+TMUX_OVERRIDE_TERM="false"
 
+source "$ZSH_PLUGINS_FOLDER/zsh-tmux/tmux.plugin.zsh"
 source "$ZSH_PLUGINS_FOLDER/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 source "$ZSH_PLUGINS_FOLDER/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$ZSH_PLUGINS_FOLDER/zsh-vi-mode/zsh-vi-mode.zsh"
@@ -22,6 +25,8 @@ source "$ZSH_PLUGINS_FOLDER/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 bindkey '^I' menu-complete
 bindkey "$terminfo[kcbt]" reverse-menu-complete
+zstyle ':autocomplete:*' min-input 3
+zstyle ':autocomplete:*' delay 1
 
 [[ -f "$ENV_FILE" ]] &&\
 	source "$ENV_FILE"
