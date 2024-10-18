@@ -11,9 +11,10 @@ setopt hist_no_store
 setopt hist_verify
 
 SHELL_FIRST_EXEC="1"
+SCRIPT_FOLDER=$(dirname $(readlink -f ~/.zshrc))
 HISTFILE="$HOME/.zsh_history"
 ENV_FILE="$HOME/.environment"
-ZSH_PLUGINS_FOLDER="$(dirname $(readlink -f $HOME/.zshrc))/plugins"
+ZSH_PLUGINS_FOLDER="$SCRIPT_FOLDER/plugins"
 TMUX_MOTD="false"
 TMUX_OVERRIDE_TERM="false"
 
@@ -30,6 +31,11 @@ zstyle ':autocomplete:*' delay 0.3
 
 [[ -f "$ENV_FILE" ]] &&\
 	source "$ENV_FILE"
+
+if [[ ! -f "$SCRIPT_FOLDER/.git.lock" ]]; then
+   "$SCRIPT_FOLDER/git.sh"
+   touch "$SCRIPT_FOLDER/.git.lock"
+fi
 
 eval "$(zoxide init --cmd cd zsh)"
 
@@ -76,7 +82,7 @@ precmd() {
 
     if [[ ! -z "$TMUX" ]] && [[ "$LAST_CMD" =~ cd.* ]] || [[ "$LAST_CMD" =~ git.* ]]; then
        tmux refresh
-   fi
+    fi
 
     SHELL_FIRST_EXEC="0"
 }
