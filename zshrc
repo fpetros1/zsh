@@ -1,3 +1,4 @@
+setopt interactive_comments
 setopt prompt_subst
 setopt auto_cd
 setopt share_history
@@ -14,18 +15,18 @@ HISTFILE="$HOME/.zsh_history"
 ENV_FILE="$HOME/.environment"
 ZSH_PLUGINS_FOLDER="$(dirname $(readlink -f $HOME/.zshrc))/plugins"
 
+source "$ZSH_PLUGINS_FOLDER/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
+source "$ZSH_PLUGINS_FOLDER/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$ZSH_PLUGINS_FOLDER/zsh-vi-mode/zsh-vi-mode.zsh"
+source "$ZSH_PLUGINS_FOLDER/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+bindkey '^I' menu-complete
+bindkey "$terminfo[kcbt]" reverse-menu-complete
+
 [[ -f "$ENV_FILE" ]] &&\
 	source "$ENV_FILE"
 
 eval "$(zoxide init --cmd cd zsh)"
-
-source "$ZSH_PLUGINS_FOLDER/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "$ZSH_PLUGINS_FOLDER/zsh-vi-mode/zsh-vi-mode.zsh"
-source "$ZSH_PLUGINS_FOLDER/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-source "$ZSH_PLUGINS_FOLDER/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
-
-bindkey '^I' menu-complete
-bindkey "$terminfo[kcbt]" reverse-menu-complete
 
 C_FG="%F{#DCD7BA}"
 C_GREEN="%F{#99BB6C}"
@@ -68,7 +69,7 @@ precmd() {
     [[ "$SHELL_FIRST_EXEC" == "0" ]] && [[ ! "$LAST_CMD" == "clear" ]] &&\
         echo ""
 
-   if [[ ! -z "$TMUX" ]] && [[ "$LAST_CMD" =~ cd.* ]]; then
+    if [[ ! -z "$TMUX" ]] && [[ "$LAST_CMD" =~ cd.* ]] || [[ "$LAST_CMD" =~ git.* ]]; then
        tmux refresh
    fi
 
