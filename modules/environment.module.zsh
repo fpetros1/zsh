@@ -1,7 +1,7 @@
 [[ -f "$ENV_FILE" ]] &&\
 	source "$ENV_FILE"
 
-if [[ ! -f "$SCRIPT_FOLDER/.git.lock" ]]; then
-   "$SCRIPT_FOLDER/git.sh"
-   touch "$SCRIPT_FOLDER/.git.lock"
+if [[ ! -f "$RC_FOLDER/.git.lock" ]]; then
+   "$RC_FOLDER/git.sh"
+   touch "$RC_FOLDER/.git.lock"
 fi
