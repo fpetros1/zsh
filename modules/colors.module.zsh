@@ -1,0 +1,4 @@
+C_FG="%F{#DCD7BA}"
+C_GREEN="%F{#99BB6C}"
+C_BLUE="%F{#7E9CD8}"
+C_RED="%F{#E46876}"
