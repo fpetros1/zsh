@@ -4,9 +4,12 @@
 [submodule "plugins/zsh-syntax-highlighting"]
 	path = plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
-[submodule "plugins/zsh-autocomplete"]
-	path = plugins/zsh-autocomplete
-	url = https://github.com/marlonrichert/zsh-autocomplete
 [submodule "plugins/zsh-tmux"]
 	path = plugins/zsh-tmux
 	url = https://github.com/zpm-zsh/tmux
+[submodule "plugins/zsh-completions"]
+	path = plugins/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git
+[submodule "plugins/fzf-tab-completion"]
+	path = plugins/fzf-tab-completion
+	url = https://github.com/lincheney/fzf-tab-completion.git

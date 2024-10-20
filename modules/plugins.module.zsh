@@ -1,7 +1,8 @@
 source "$ZSH_PLUGINS_FOLDER/zsh-tmux/tmux.plugin.zsh"
-source "$ZSH_PLUGINS_FOLDER/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 source "$ZSH_PLUGINS_FOLDER/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$ZSH_PLUGINS_FOLDER/zsh-completions/zsh-completions.plugin.zsh"
 source "$ZSH_PLUGINS_FOLDER/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source "$ZSH_PLUGINS_FOLDER/fzf-tab-completion/zsh/fzf-zsh-completion.sh"
 
 bindkey '^I' menu-complete
 bindkey "$terminfo[kcbt]" reverse-menu-complete
@@ -20,3 +21,8 @@ zle -N zle-keymap-select
 
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(fzf --zsh)"
+
+# Completions
+fpath=("$ZSH_PLUGINS_FOLDER/zsh-completions/src" $fpath)
+autoload -U compinit; compinit
+
