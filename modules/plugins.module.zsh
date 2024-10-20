@@ -3,6 +3,7 @@ source "$ZSH_PLUGINS_FOLDER/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$ZSH_PLUGINS_FOLDER/zsh-completions/zsh-completions.plugin.zsh"
 source "$ZSH_PLUGINS_FOLDER/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$ZSH_PLUGINS_FOLDER/fzf-tab-completion/zsh/fzf-zsh-completion.sh"
+source "$ZSH_PLUGINS_FOLDER/zsh-vi-mode/zsh-vi-mode.zsh"
 
 bindkey '^I' menu-complete
 bindkey "$terminfo[kcbt]" reverse-menu-complete
@@ -15,6 +16,10 @@ function zle-keymap-select {
     *) RPS1="" ;;
   esac
   zle reset-prompt
+}
+
+function zvm_after_init() {
+  zvm_bindkey viins "^R" fzf-history-widget
 }
 
 zle -N zle-keymap-select

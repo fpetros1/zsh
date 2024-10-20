@@ -1,7 +1,7 @@
 arrow_color() {
-    case "$KEYMAP"; in
+    case "$ZVM_MODE"; in
         "i") echo "${C_GREEN}" ;;
-        "vicmd") echo "${C_RED}" ;;
+        "n") echo "${C_RED}" ;;
         *) echo "${C_GREEN}" ;;
     esac
 }

@@ -1,4 +1,4 @@
-setopt vi
+unsetopt vi
 setopt hist_ignore_space
 setopt interactive_comments
 setopt prompt_subst
