@@ -16,4 +16,3 @@ if [[ $(which bat) ]]; then
         -o "$THEMES_FOLDER/kanagawa.tmTheme"
     bat cache --build
 fi
->>>>>>> c2f8178 (back to zsh-vi-mode, add bat kanagawa theme to install script and settings)
