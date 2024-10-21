@@ -16,3 +16,10 @@ if [[ $(which bat) ]]; then
         -o "$THEMES_FOLDER/kanagawa.tmTheme"
     bat cache --build
 fi
+
+#install wezterm terminfo
+tempfile=$(mktemp)
+curl -o $tempfile "https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo"
+tic -x -o "$CONFIG_DIR/terminfo" $tempfile
+rm $tempfile
+ln -s "$CONFIG_DIR/terminfo" "$HOME/.terminfo"
