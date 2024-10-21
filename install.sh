@@ -20,6 +20,5 @@ fi
 #install wezterm terminfo
 tempfile=$(mktemp)
 curl -o $tempfile "https://raw.githubusercontent.com/wez/wezterm/main/termwiz/data/wezterm.terminfo"
-tic -x -o "$CONFIG_DIR/terminfo" $tempfile
+tic -x -o "$HOME/.terminfo" $tempfile
 rm $tempfile
-ln -s "$CONFIG_DIR/terminfo" "$HOME/.terminfo"
