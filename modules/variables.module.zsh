@@ -9,3 +9,4 @@ export ZSH_PLUGINS_FOLDER="$RC_FOLDER/plugins"
 export TMUX_MOTD="false"
 export TMUX_OVERRIDE_TERM="false"
 export BAT_THEME="kanagawa"
+export ZVM_CURSOR_STYLE_ENABLED=false
