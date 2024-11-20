@@ -1,3 +1,5 @@
+eval "$(starship init zsh)"
+
 arrow_color() {
     case "$ZVM_MODE"; in
         "i") echo "${C_GREEN}" ;;
@@ -6,28 +8,9 @@ arrow_color() {
     esac
 }
 
-cmd_arrow() {
-#    echo "$(arrow_color)󰒊 ${C_FG}"
+cmd_symbol() {
     echo "$(arrow_color)󰘧 ${C_FG}"
 }
-
-get_pwd() {
-    echo $(pwd | sed -e "s|$HOME|~|g")
-}
-
-cmd_pwd() {
-    echo "${C_BLUE} $(get_pwd)"$'\n'"${C_FG}" 
-}
-
-prmpt() {
-    if [[ -z "$TMUX" ]] || [[ ! -z "$NVIM" ]]; then
-        echo -n "$(cmd_pwd)"
-    fi
-
-    echo "$(cmd_arrow)"
-}
-
-PS1='$(prmpt)'
 
 precmd() {
     LAST_CMD=$(history | tail -n 1 | awk '{print $2}')
@@ -41,3 +24,5 @@ precmd() {
 
     SHELL_FIRST_EXEC="0"
 }
+
+PS1="$PS1"'$(cmd_symbol)'
